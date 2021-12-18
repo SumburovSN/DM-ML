@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Display</title>
+    </head>
+    
+    <body>
+    
+        <h2>Click the element</h2>        
+    
+        <svg width="300" height="300">
+            <polygon id="1" points="36,88 48,76 90,76 102,88 90,100 48,100" style="fill:white; stroke:black" onclick="generate(1)" />
+            <text x="66" y="93" fill="black">1</text>
+            <polygon id="2" points="105,91 117,103 117,145 105,157 93,145 93,103" style="fill:white; stroke:black" onclick="generate(2)" />/>
+            <text x="102" y="131" fill="black">2</text>
+            <polygon id="3" points="105,163 117,175 117,217 105,229 93,217 93,175" style="fill:white; stroke:black" onclick="generate(3)" />/>
+            <text x="102" y="200" fill="black">3</text>
+            <polygon id="4" points="36,232 48,220 90,220 102,232 90,244 48,244" style="fill:white; stroke:black" onclick="generate(4)" />
+            <text x="66" y="234" fill="black">4</text>
+            <polygon id="5" points="33,91 45,103 45,145 33,157 21,145 21,103" style="fill:white; stroke:black" onclick="generate(5)" />
+            <text x="30" y="131" fill="black">5</text>
+            <polygon id="6" points="33,163 45,175 45,217 33,229 21,217 21,175" style="fill:white; stroke:black" onclick="generate(6)" />
+            <text x="30" y="200" fill="black">6</text>
+            <polygon id="7" points="36,160 48,148 90,148 102,160 90,172 48,172" style="fill:white; stroke:black" onclick="generate(7)" />
+            <text x="66" y="165" fill="black">7</text>
+        </svg>
+
+        <p id="demo">0 0 0 0 0 0 0</p>
+        
+        <script type="text/javascript">
+            let x = [0, 0, 0, 0, 0, 0, 0];
+
+            function showCoords(event) {
+                var x = event.clientX;
+                var y = event.clientY;
+                var coords = "X coords: " + x + ", Y coords: " + y;
+                document.getElementById("demo").innerHTML = coords;
+            }
+
+            function generate(count) {
+                if (x[count-1] == 0) {
+                    x[count-1] = 1;
+                    id = count.toString()
+                    document.getElementById(id).style.fill = "red"
+                } else {
+                    x[count-1] = 0;
+                    id = count.toString()
+                    document.getElementById(id).style.fill = "white";
+                }
+                sequence = "";
+                x.forEach(element => {
+                    sequence = sequence + " " + element;
+                });
+                document.getElementById("demo").innerHTML = sequence;
+            }
+            
+        </script>        
+    
+    </body>
+
+</html>
